@@ -1,0 +1,144 @@
+/* Schriftarten einbinden */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Avenir:wght@300&display=swap');
+
+/* Allgemeine Einstellungen */
+body {
+    font-family: 'Avenir', sans-serif; /* Avenir Light als Standardschriftart für den Text */
+    color: #1d3e2f;
+    background-color: #f3f2ec;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Mindesthöhe des Viewports */
+}
+
+/* Header */
+header {
+    background-color: #8fc1a9; /* Dezenter Grünton */
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif; /* Poppins Semi Bold für Überschriften */
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 600; /* Semi Bold */
+}
+
+/* Hauptinhalt */
+.main-content {
+    flex: 1; /* Hauptinhalt nimmt verfügbaren Platz ein */
+}
+
+/* Abschnitte */
+section {
+    padding: 20px;
+    margin: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Text linksbündig ausrichten */
+}
+
+/* Bilder */
+section img {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 100%; /* Bild nimmt die volle Breite des Elternelements ein */
+    height: auto; /* Verhindert Verzerrungen des Bildes */
+    border-radius: 8px;
+    max-height: 400px; /* Maximale Höhe des Bildes */
+}
+
+/* Buttons */
+button {
+    background-color: #2f5f48; /* Dunkler Grünton für den Button */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    display: block;
+    margin: 20px auto;
+    transition: background-color 0.3s ease;
+    font-family: 'Avenir', sans-serif; /* Avenir Light für den Button-Text */
+}
+
+button:hover {
+    background-color: #1d3e2f; /* Dunkler Grünton für Hover */
+}
+
+/* Überschriften */
+h2, h3 {
+    color: #2f5f48;
+    font-family: 'Poppins', sans-serif; /* Poppins Semi Bold für Überschriften */
+    font-weight: 600; /* Semi Bold */
+    background-color: #e0f0e4; /* Dezenter Grünton für Hintergrund */
+    padding: 10px 20px; /* Innenabstand für Überschriften */
+    border-radius: 8px; /* Abgerundete Ecken */
+}
+
+/* Absätze und allgemeiner Text */
+p, body {
+    line-height: 1.6;
+    margin: 10px 0;
+    padding-left: 20px; /* Abstand zum linken Rand */
+}
+
+p a {
+    padding-left: 20px; /* Abstand zum linken Rand für Links innerhalb von Absätzen */
+    text-decoration: none;
+    color: #2f5f48;
+    font-weight: bold;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Horizontaler Strich */
+hr {
+    border: 0;
+    height: 1px;
+    background: #b0b0b0;
+    margin: 20px 0;
+}
+
+/* Footer */
+footer {
+    background-color: #e0f0e4; /* Dezenter Grünton */
+    color: #1d3e2f; /* Dunkler Grünton für Text */
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between; /* Inhalte rechts und links ausrichten */
+    align-items: center; /* Vertikal zentrieren */
+}
+
+footer h3 {
+    margin: 0;
+    padding-left: 20px; /* Abstand zum linken Rand für die Überschrift */
+    font-family: 'Poppins', sans-serif; /* Poppins Semi Bold für die Überschrift */
+    font-weight: 600; /* Semi Bold */
+}
+
+.footer-contact {
+    text-align: right; /* Text rechtsbündig ausrichten */
+    padding-right: 20px; /* Abstand zum rechten Rand */
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: #8fc1a9;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
