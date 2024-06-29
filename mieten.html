@@ -39,6 +39,8 @@
     // Datum im richtigen Format für den Betreff vorbereiten
     var fromDateParts = from.split('-');
     var toDateParts = to.split('-');
+	var fromFormatted = fromDateParts[2] + '.' + fromDateParts[1] + '.' + fromDateParts[0]; // Format: dd.mm.yyyy
+    var toFormatted = toDateParts[2] + '.' + toDateParts[1] + '.' + toDateParts[0];         // Format: dd.mm.yyyy
     var fromFormatted_short = fromDateParts[2] + '.' + fromDateParts[1];
     var toFormatted_short = toDateParts[2] + '.' + toDateParts[1];
 
@@ -46,8 +48,8 @@
     var subject = encodeURIComponent('Anfrage: ' + quantity.value + 'x - von ' + fromFormatted_short + ' bis ' + toFormatted_short);
     var body = encodeURIComponent('\nName: ' + name + '\n' +
                                    'Anzahl: ' + quantity.value + '\n' +
-                                   'Von: ' + from + '\n' +
-                                   'Bis: ' + to + '\n' +
+                                   'Von: ' + fromFormatted + '\n' +
+                                   'Bis: ' + toFormatted + '\n' +
                                    'Mit Tischdecken: ' + (tableclothChecked ? 'Ja' : 'Nein') + '\n' +
                                    'Tischdeckenfarbe: ' + tableclothColor + '\n' +
                                    'Sonstige Anmerkungen: ' + comments + '\n' + '\n');
