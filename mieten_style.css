@@ -60,7 +60,7 @@ header h1 {
 }
 
 /* Media Queries für kleinere Bildschirme (z.B. Tablets und Smartphones) */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 900px) {
     .availability-form {
         margin-left: 10px; /* Kleinerer Abstand links */
         margin-right: 10px; /* Kleinerer Abstand rechts */
