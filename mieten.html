@@ -28,48 +28,39 @@
     </script>
 	<script>
     function prepareEmail() {
-        // Formulardaten abrufen
-        var name = document.getElementById('name').value;
-        var quantity = document.querySelector('input[name="quantity"]:checked');
-        var from = document.getElementById('from').value;
-        var to = document.getElementById('to').value;
-        var tableclothChecked = document.getElementById('tablecloth').checked;
-        var tableclothColor = document.getElementById('tablecloth-color').value;
-        var comments = document.getElementById('comments').value;
+    var name = document.getElementById('name').value;
+    var quantity = document.querySelector('input[name="quantity"]:checked');
+    var from = document.getElementById('from').value;
+    var to = document.getElementById('to').value;
+    var tableclothChecked = document.getElementById('tablecloth').checked;
+    var tableclothColor = document.getElementById('tablecloth-color').value;
+    var comments = document.getElementById('comments').value;
 
-        /* Validierung der Pflichtfelder
-        if (!name || !quantity || !from || !to) {
-            alert('Bitte füllen Sie alle Pflichtfelder aus (Name, Anzahl, Von, Bis).');
-            return;
-        } */
+    // Datum im richtigen Format für den Betreff vorbereiten
+    var fromDateParts = from.split('-');
+    var toDateParts = to.split('-');
+    var fromFormatted_short = fromDateParts[2] + '.' + fromDateParts[1];
+    var toFormatted_short = toDateParts[2] + '.' + toDateParts[1];
 
-        // Datum im richtigen Format für den Betreff vorbereiten
-        var fromDateParts = from.split('-'); // Datum aus dem Formular extrahieren (im Format yyyy-mm-dd)
-        var toDateParts = to.split('-');     // Datum aus dem Formular extrahieren (im Format yyyy-mm-dd)
-        var fromFormatted = fromDateParts[2] + '.' + fromDateParts[1] + '.' + fromDateParts[0]; // Format: dd.mm.yyyy
-        var toFormatted = toDateParts[2] + '.' + toDateParts[1] + '.' + toDateParts[0];         // Format: dd.mm.yyyy
-		var fromFormatted_short = fromDateParts[2] + '.' + fromDateParts[1]
-		var toFormatted_short = toDateParts[2] + '.' + toDateParts[1]
+    // E-Mail Betreff und Text zusammenstellen
+    var subject = encodeURIComponent('Anfrage: ' + quantity.value + 'x - von ' + fromFormatted_short + ' bis ' + toFormatted_short);
+    var body = encodeURIComponent('\nName: ' + name + '\n' +
+                                   'Anzahl: ' + quantity.value + '\n' +
+                                   'Von: ' + from + '\n' +
+                                   'Bis: ' + to + '\n' +
+                                   'Mit Tischdecken: ' + (tableclothChecked ? 'Ja' : 'Nein') + '\n' +
+                                   'Tischdeckenfarbe: ' + tableclothColor + '\n' +
+                                   'Sonstige Anmerkungen: ' + comments + '\n' + '\n');
 
-        // E-Mail Betreff und Text zusammenstellen
-        var subject = encodeURIComponent('Anfrage: ' + quantity.value + 'x - von ' + fromFormatted_short + ' bis ' + toFormatted_short);
-        var body = encodeURIComponent('\nName: ' + name + '\n' +
-                                       'Anzahl: ' + quantity.value + '\n' +
-                                       'Von: ' + fromFormatted + '\n' +
-                                       'Bis: ' + toFormatted + '\n' +
-                                       'Mit Tischdecken: ' + (tableclothChecked ? 'Ja' : 'Nein') + '\n' +
-                                       'Tischdeckenfarbe: ' + tableclothColor + '\n' +
-                                       'Sonstige Anmerkungen: ' + comments + '\n' + '\n');
+    // E-Mail Adresse des Empfängers
+    var recipient = 'jan-hendricks@outlook.de';
 
-        // E-Mail Adresse des Empfängers
-        var recipient = 'jan-hendricks@outlook.de';
+    // Mailto-Link zusammenstellen
+    var mailtoLink = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
 
-        // Mailto-Link zusammenstellen
-        var mailtoLink = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
+    return mailtoLink;  // Link zurückgeben
+}
 
-        // Benutzer zur E-Mail-Anwendung weiterleiten
-        window.location.href = mailtoLink;
-    }
 </script>
 
 
@@ -87,7 +78,7 @@
         </div>
         <div class="availability-form">
             <h2>Unverbindliche Anfrage</h2>
-            <form onsubmit="prepareEmail()">
+            <form onsubmit="window.location.href = prepareEmail(); return false;">
                 <label for="name">Name:*</label><br>
                 <input type="text" id="name" name="name" required><br><br>
 
