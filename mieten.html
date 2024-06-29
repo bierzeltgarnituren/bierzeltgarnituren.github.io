@@ -68,7 +68,6 @@
         var mailtoLink = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
 
         // Benutzer zur E-Mail-Anwendung weiterleiten
-		document.getElementById('thank-you-message').style.display = 'block';
         window.location.href = mailtoLink;
     }
 </script>
@@ -122,10 +121,8 @@
 
                 <label for="comments">Sonstige Anmerkungen:</label><br>
                 <textarea id="comments" name="comments" rows="4"></textarea><br>
-				<div id="form-container">
-					<button type="submit" onclick="prepareEmail()">Absenden</button>
-					<p id="thank-you-message" style="display: none;">Danke für Ihre Anfrage</p>
-				</div>
+
+                <button type="submit" onclick="prepareEmail()">Absenden</button>
             </form>
         </div>
     </section>
