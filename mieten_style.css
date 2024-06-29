@@ -47,16 +47,26 @@ header h1 {
     max-height: 300px; /* Maximale Höhe des Bildes */
 }
 
+/* Standard-CSS für größere Bildschirme */
 .availability-form {
     width: 100%;
-    max-width: 600px; /* Maximale Breite für das Formular */
+    max-width: 600px;
     padding: 20px;
-    background-color: #ffffff; /* Hintergrundfarbe */
-    border-radius: 8px; /* Abgerundete Ecken */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Schatteneffekt */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-left: auto;
     margin-right: auto;
 }
+
+/* Media Queries für kleinere Bildschirme (z.B. Tablets und Smartphones) */
+@media only screen and (max-width: 768px) {
+    .availability-form {
+        margin-left: 10px; /* Kleinerer Abstand links */
+        margin-right: 10px; /* Kleinerer Abstand rechts */
+    }
+}
+
 
 .availability-form label {
     display: block;
