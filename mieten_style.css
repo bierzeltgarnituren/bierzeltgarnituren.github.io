@@ -1,0 +1,133 @@
+/* Schriftarten einbinden */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Avenir:wght@300&display=swap');
+
+/* Allgemeine Einstellungen */
+body {
+    font-family: 'Avenir', sans-serif; /* Avenir Light als Standardschriftart für den Text */
+    color: #1d3e2f;
+    background-color: #f3f2ec;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Mindesthöhe des Viewports */
+}
+
+/* Header */
+header {
+    background-color: #8fc1a9; /* Dezenter Grünton */
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif; /* Poppins Semi Bold für Überschriften */
+}
+
+header h1 {
+    margin: 0;
+    font-weight: 600; /* Semi Bold */
+}
+
+/* Hauptinhalt */
+.main-content {
+    display: flex;
+    flex-direction: column; /* Ändert die Richtung des Flex-Containers auf Spalte */
+    align-items: center;
+    padding: 20px;
+}
+
+.image-container {
+    max-width: 100%;
+    margin-bottom: 20px; /* Abstand nach unten für das Bild */
+}
+
+.image-container img {
+    width: 100%;
+    height: auto; /* Verhindert Verzerrungen des Bildes */
+    border-radius: 8px;
+    max-height: 300px; /* Maximale Höhe des Bildes */
+}
+
+.availability-form {
+    width: 100%;
+    max-width: 600px; /* Maximale Breite für das Formular */
+    padding: 20px;
+    background-color: #ffffff; /* Hintergrundfarbe */
+    border-radius: 8px; /* Abgerundete Ecken */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Schatteneffekt */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.availability-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.availability-form input[type="text"],
+.availability-form input[type="number"],
+.availability-form input[type="date"],
+.availability-form select,
+.availability-form textarea {
+    width: calc(100% - 22px); /* Breite auf 100% minus Padding */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Avenir', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box; /* Berücksichtigt Padding und Border in der Breite */
+}
+
+.availability-form input[type="radio"] {
+    margin: 0 5px 0 0;
+}
+
+.availability-form label.radio-inline {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.availability-form button {
+    background-color: #2f5f48; /* Dunkler Grünton für den Button */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    font-family: 'Avenir', sans-serif; /* Avenir Light für den Button-Text */
+}
+
+.availability-form button:hover {
+    background-color: #1d3e2f; /* Dunkler Grünton für Hover */
+}
+
+/* Abschnitte */
+section {
+    margin: 20px;
+    text-align: left; /* Text linksbündig ausrichten */
+}
+
+footer {
+    background-color: #8fc1a9; /* Dezenter Grünton */
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif; /* Poppins Semi Bold für Überschriften */
+}
+
+footer h3 {
+    margin: 0;
+    font-weight: 600; /* Semi Bold */
+}
+
+.footer-contact p {
+    margin: 5px 0;
+}
+
+.footer-contact a {
+    color: #ffffff;
+    text-decoration: none;
+}

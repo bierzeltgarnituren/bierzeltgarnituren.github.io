@@ -79,6 +79,12 @@ h2, h3 {
     background-color: #e0f0e4; /* Dezenter Grünton für Hintergrund */
     padding: 10px 20px; /* Innenabstand für Überschriften */
     border-radius: 8px; /* Abgerundete Ecken */
+    display: inline-block; /* Inline-Block für die richtige Anzeige von FontAwesome-Icons */
+    margin-bottom: 10px; /* Abstand nach unten */
+}
+
+h2 i, h3 i {
+    margin-left: 10px; /* Abstand zwischen Icon und Text */
 }
 
 /* Absätze und allgemeiner Text */

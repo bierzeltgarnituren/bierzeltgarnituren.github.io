@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mieten_style.css">
+    <title>Bierzeltgarnituren mieten - Verfügbarkeitsanfrage</title>
+    <script>
+        function toggleTableclothColor() {
+            var tableclothCheckbox = document.getElementById('tablecloth');
+            var tableclothColor = document.getElementById('tablecloth-color');
+            var tableclothColorLabel = document.getElementById('tablecloth-color-label');
+
+            if (tableclothCheckbox.checked) {
+                tableclothColor.style.display = 'block';
+                tableclothColorLabel.style.display = 'block';
+                tableclothColor.setAttribute('required', 'required');
+            } else {
+                tableclothColor.style.display = 'none';
+                tableclothColorLabel.style.display = 'none';
+                tableclothColor.removeAttribute('required');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            toggleTableclothColor();
+        });
+    </script>
+	<script>
+    function prepareEmail() {
+        // Formulardaten abrufen
+        var name = document.getElementById('name').value;
+        var quantity = document.querySelector('input[name="quantity"]:checked');
+        var from = document.getElementById('from').value;
+        var to = document.getElementById('to').value;
+        var tableclothChecked = document.getElementById('tablecloth').checked;
+        var tableclothColor = document.getElementById('tablecloth-color').value;
+        var comments = document.getElementById('comments').value;
+
+        // Validierung der Pflichtfelder
+        if (!name || !quantity || !from || !to) {
+            alert('Bitte füllen Sie alle Pflichtfelder aus (Name, Anzahl, Von, Bis).');
+            return;
+        }
+
+        // Datum im richtigen Format für den Betreff vorbereiten
+        var fromDateParts = from.split('-'); // Datum aus dem Formular extrahieren (im Format yyyy-mm-dd)
+        var toDateParts = to.split('-');     // Datum aus dem Formular extrahieren (im Format yyyy-mm-dd)
+        var fromFormatted = fromDateParts[2] + '.' + fromDateParts[1] + '.' + fromDateParts[0]; // Format: dd.mm.yyyy
+        var toFormatted = toDateParts[2] + '.' + toDateParts[1] + '.' + toDateParts[0];         // Format: dd.mm.yyyy
+		var fromFormatted_short = fromDateParts[2] + '.' + fromDateParts[1]
+		var toFormatted_short = toDateParts[2] + '.' + toDateParts[1]
+
+        // E-Mail Betreff und Text zusammenstellen
+        var subject = encodeURIComponent('Anfrage: ' + quantity.value + 'x - von ' + fromFormatted_short + ' bis ' + toFormatted_short);
+        var body = encodeURIComponent('\nName: ' + name + '\n' +
+                                       'Anzahl: ' + quantity.value + '\n' +
+                                       'Von: ' + fromFormatted + '\n' +
+                                       'Bis: ' + toFormatted + '\n' +
+                                       'Mit Tischdecken: ' + (tableclothChecked ? 'Ja' : 'Nein') + '\n' +
+                                       'Tischdeckenfarbe: ' + tableclothColor + '\n' +
+                                       'Sonstige Anmerkungen: ' + comments + '\n' + '\n');
+
+        // E-Mail Adresse des Empfängers
+        var recipient = 'jan-hendricks@outlook.de';
+
+        // Mailto-Link zusammenstellen
+        var mailtoLink = 'mailto:' + recipient + '?subject=' + subject + '&body=' + body;
+
+        // Benutzer zur E-Mail-Anwendung weiterleiten
+        window.location.href = mailtoLink;
+    }
+</script>
+
+
+
+</head>
+<body>
+    <header>
+        <h1>Bierzeltgarnitur mieten - Verfügbarkeitsanfrage</h1>
+    </header>
+
+    <section class="main-content">
+        <div class="image-container">
+            <!--img src="garniturset.jpg" alt="Bierzeltgarnitur Set"-->
+			<img src="https://github.com/bierzeltgarnituren/bierzeltgarnituren.github.io/blob/main/garniturset.jpg?raw=true" alt="Bierzeltgarnitur Set">
+        </div>
+        <div class="availability-form">
+            <h2>Unverbindliche Anfrage</h2>
+            <form action="submit_form.php" method="post">
+                <label for="name">Name:*</label><br>
+                <input type="text" id="name" name="name" required><br>
+
+                <label>Anzahl:*</label><br>
+                <label class="radio-inline">
+                    <input type="radio" id="quantity1" name="quantity" value="1" required> 1
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" id="quantity2" name="quantity" value="2" required> 2
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" id="quantity3" name="quantity" value="3" required> 3
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" id="quantity4" name="quantity" value="4" required> 4
+                </label><br>
+
+                <label for="from">von:*</label><br>
+                <input type="date" id="from" name="from" required><br>
+
+                <label for="to">bis:*</label><br>
+                <input type="date" id="to" name="to" required><br>
+
+                <label for="tablecloth">mit Einmaltischdecke(n):</label><br>
+                <input type="checkbox" id="tablecloth" name="tablecloth" checked onchange="toggleTableclothColor()"><br>
+
+                <label for="tablecloth-color" id="tablecloth-color-label">Farbe:*</label><br>
+                <select id="tablecloth-color" name="tablecloth-color" required>
+                    <option value="weiß">Weiß mit Damastprägung</option>
+                </select><br>
+
+                <label for="comments">Sonstige Anmerkungen:</label><br>
+                <textarea id="comments" name="comments" rows="4"></textarea><br>
+
+                <button type="button" onclick="prepareEmail()">Absenden</button>
+            </form>
+        </div>
+    </section>
+
+    <section>
+        <h2>Konditionen</h2>
+        <p>Preis: 9€ / Garnitur (1 Tisch & 2 Bänke) pro Kalendertag</p>
+        <p>Wochenendangebot (Fr-So): 22€ / Garnitur</p>
+        <p>Kaution: 25€ / Garnitur</p>
+        <p>Abholung & Rückgabe nach Terminvereinbarung:</p>
+        <p>Nur für Selbstabholer</p>
+        <p>Abholung: Ab 10 Uhr morgens</p>
+        <p>Rückgabe: Bis 20 Uhr abends</p>
+    </section>
+
+    <footer>
+        <h3>Bierzeltgarnitur Vermietung</h3>
+        <div class="footer-contact">
+            <p>0157 35269 050</p>
+            <p><a href="mailto:jan-hendricks@outlook.de">jan-hendricks@outlook.de</a></p>
+        </div>
+    </footer>
+</body>
+</html>
